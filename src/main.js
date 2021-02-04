@@ -53,7 +53,7 @@ document.getElementById("allCountries").addEventListener("click", function () {
     let countriesOne = [...new Set(countries.map(item => item.team))];
     
   let cardsFunction22 = () => {
-        let containerCards22 = document.getElementById("card");
+        let containerCards22 = document.getElementById("resultados");
         let html = `
        <div class="cardTeam" >
 
