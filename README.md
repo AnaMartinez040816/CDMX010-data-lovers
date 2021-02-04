@@ -72,14 +72,14 @@ Se eligió:
 
 ### Prototipos.
 
-* [Prototipo1](readme.img/prototyp1.jpeg)
-* [Prototipo2](readme.img/prototyp2.jpeg)
-* [Prototipo3](readme.img/prototyp3.jpeg)
-* [Prototipo4](readme.img/prototyp4.jpeg)
-* [Prototipo5](readme.img/prototyp5.jpeg)
-* [Prototipo6](readme.img/prototyp6.jpeg)
-* [Prototipo7](readme.img/prototyp7.jpeg)
-* [Prototipo8](readme.img/prototyp8.jpeg)
+* ![Prototipo1](https://raw.githubusercontent.com/MiriamNM/CDMX010-data-lovers/master/readme.img/prototyp1.jpeg)
+* ![Prototipo2](https://raw.githubusercontent.com/MiriamNM/CDMX010-data-lovers/master/readme.img/prototyp2.jpeg)
+* ![Prototipo3](https://raw.githubusercontent.com/MiriamNM/CDMX010-data-lovers/master/readme.img/prototyp3.jpeg)
+* ![Prototipo4](https://raw.githubusercontent.com/MiriamNM/CDMX010-data-lovers/master/readme.img/prototyp4.jpeg)
+* ![Prototipo5](https://raw.githubusercontent.com/MiriamNM/CDMX010-data-lovers/master/readme.img/prototyp5.jpeg)
+* ![Prototipo6](https://raw.githubusercontent.com/MiriamNM/CDMX010-data-lovers/master/readme.img/prototyp6.jpeg)
+* ![Prototipo7](https://raw.githubusercontent.com/MiriamNM/CDMX010-data-lovers/master/readme.img/prototyp7.jpeg)
+* ![Prototipo8](https://raw.githubusercontent.com/MiriamNM/CDMX010-data-lovers/master/readme.img/prototyp8.jpeg)
 
 ### Feedback de usuarios:
 *Ana Morales:
