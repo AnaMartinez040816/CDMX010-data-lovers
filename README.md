@@ -72,7 +72,14 @@ Se eligió:
 
 ### Prototipos.
 
-* 
+* [Prototipo1](readme.img/prototyp1.jpeg)
+* [Prototipo2](readme.img/prototyp2.jpeg)
+* [Prototipo3](readme.img/prototyp3.jpeg)
+* [Prototipo4](readme.img/prototyp4.jpeg)
+* [Prototipo5](readme.img/prototyp5.jpeg)
+* [Prototipo6](readme.img/prototyp6.jpeg)
+* [Prototipo7](readme.img/prototyp7.jpeg)
+* [Prototipo8](readme.img/prototyp8.jpeg)
 
 ### Feedback de usuarios:
 *Ana Morales:
