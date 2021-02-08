@@ -1,19 +1,20 @@
 import {theAthletes} from "./data/athletes/athletes.js";
+const losAtletas= theAthletes.athletes
 
 export const filterSearch = () => {
-    const losAtletas= theAthletes.athletes
+   const losAtletas= theAthletes.athletes
     const formulario = document.querySelector("#searchB");
     const resultadoDelFinder = document.querySelector("#resultados")
     const textUser = formulario.value.toLowerCase();
     for(let e of losAtletas){
         let nombre = e.name.toLowerCase();
-        if(nombre.indexOf(textUser) !== -1){
+       if(nombre.indexOf(textUser) !== -1){
             resultadoDelFinder.innerHTML += 
             cards(e);
         }}
-    if(resultadoDelFinder.innerHTML === ""){
+   if(resultadoDelFinder.innerHTML === ""){
         resultadoDelFinder.innerHTML += `
-        <h1> The athlete don´t have found...try again</h1>
+       <h1> The athlete does not exist...try again</h1>
             `
     }}
 

@@ -3,33 +3,96 @@ import {filterSearch, cards} from './data.js';
 
 const losAtletas= theAthletes.athletes
 const butShowAll= document.getElementById("buttonShowAll");
-butShowAll.addEventListener ("click", function showCards() {
-   let cardsFunction = losAtletas.map((e)=>{
-       return cards(e);
-   }).join(""); 
-  document.getElementById("resultados").innerHTML= cardsFunction
-});
 const selectGender = document.querySelector("#genderFilter");
 const selectMedal = document.querySelector("#medalFilter");
 const selectTeam = document.querySelector("#pais");
 const selectSport = document.querySelector("#sportSelector")
+const selectAthlete = document.querySelector("#athleteFilter")
 const buttonSearch = document.getElementById("buttonsearch2");
-buttonSearch.addEventListener("click", function theGenderFilter() {
-    let athletesFilter = theAthletes.athletes;
-    let html1 = ""
-    let results = document.querySelector("#resultados");
 
-    let filterGender = athletesFilter.filter( athlete => athlete.sport === selectSport.value && athlete.gender === selectGender.value && athlete.medal === selectMedal.value && athlete.team === selectTeam.value)
-    filterGender.forEach( athlete => { html1 += cards(athlete)})
-    results.innerHTML= html1;
+
+
+buttonSearch.addEventListener("click", function theGenderFilter() {
+  if (selectSport) {
+       let athletesFilter = theAthletes.athletes;
+       let html1 = ""
+       let results = document.querySelector("#resultados");
+       let filterGender = athletesFilter.filter( athlete => athlete.sport === selectSport.value && athlete.gender === selectGender.value && athlete.medal === selectMedal.value && athlete.team === selectTeam.value)
+       filterGender.forEach( athlete => { html1 += cards(athlete)})
+       results.innerHTML= html1;
+       const theTotal = filterGender.length;
+       let element = document.createElement("p")
+       element.textContent = `${theTotal} Total`
+       const nav = document.querySelector("#totalFilter");
+       nav.appendChild(element);
+       nav.innerHTML = theTotal; 
+    
+  }
   
-    const theTotal = filterGender.length;
-    let element = document.createElement("p")
-    element.textContent = `${theTotal} Total`
-    const nav = document.querySelector("#totalFilter");
-    nav.appendChild(element);
-    nav.innerHTML = theTotal;
-});  
+
+    if (selectTeam.value === "All Teams alphabetically") {
+      // muestra una lista con total de los equipos ganadores 
+      const importedAthletes=theAthletes.athletes;
+      let countries = importedAthletes.slice(0);
+      countries.sort(function(a,b) {
+        var x = a.team.toLowerCase(); 
+        var y = b.team.toLowerCase(); 
+        return x < y ? -1 : x > y ? 1 : 0;
+      });
+      let countriesOne = [...new Set(countries.map(item => item.team))];
+      let cardsFunction22 = () => {
+        let containerCards22 = document.getElementById("resultados");
+        let html = `
+           <div class="cardTeam" >
+                <img src="assets/logo rio de janeiro.png" class="mediumLogo">                       
+                <div class="titletotalteams">${countriesOne.length} Equipos ganaron medallas</div> 
+                <br> 
+                <img src="assets/logo rio de janeiro.png" class="mediumLogo">
+           </div>
+           <table>  
+           <tr>
+           `;
+          countriesOne.map(( country ) => {
+              let card22 = `
+                 <td class="itemTeam"> ${country} </td> 
+                 `
+                html += card22 ;                     
+          }); 
+          html += `
+          </tr>
+          </table>
+          `; 
+          containerCards22.innerHTML = html;
+      };
+    cardsFunction22()
+    } 
+      if (selectAthlete.value === "All Athletes") { 
+         // Muestra todos los atletas
+          let cardsFunction = losAtletas.map((e)=>{
+            return cards(e);
+          }).join(""); 
+          document.getElementById("resultados").innerHTML= cardsFunction;
+      }
+        if (searchB) {
+          const losAtletas= theAthletes.athletes
+          const formulario = document.querySelector("#searchB");
+          const resultadoDelFinder = document.querySelector("#resultados")
+          const textUser = formulario.value.toLowerCase();
+          for(let e of losAtletas){
+              let nombre = e.name.toLowerCase();
+              if(nombre.indexOf(textUser) !== -1){
+                  resultadoDelFinder.innerHTML += 
+                  cards(e);
+              }
+          }
+          if(resultadoDelFinder.innerHTML === ""){
+              resultadoDelFinder.innerHTML += `
+              <h1> The athlete does not exist...try again</h1>
+                  `;
+          }
+        }   
+
+}); 
 
 const losAtletas2 = theAthletes.athletes;
 losAtletas2.sort( function (a,b) {
@@ -41,46 +104,7 @@ losAtletas2.sort( function (a,b) {
     }
     return 0;
 });
-// muestra una lista con total de los equipos ganadores 
-document.getElementById("allCountries").addEventListener("click", function () {
-    const importedAthletes=theAthletes.athletes;
-    let countries = importedAthletes.slice(0);
-    countries.sort(function(a,b) {
-         var x = a.team.toLowerCase(); 
-         var y = b.team.toLowerCase(); 
-        return x < y ? -1 : x > y ? 1 : 0;
-    });
-    let countriesOne = [...new Set(countries.map(item => item.team))];
-    
-  let cardsFunction22 = () => {
-        let containerCards22 = document.getElementById("resultados");
-        let html = `
-       <div class="cardTeam" >
 
-                 <img src="assets/logo rio de janeiro.png" class="mediumLogo">                       
-                 <div class="titletotalteams">${countriesOne.length} Equipos ganaron medallas</div> 
-                 <br> 
-                 <img src="assets/logo rio de janeiro.png" class="mediumLogo">
-
-       </div>
-      <table>  
-        <tr>
-        `;
-          countriesOne.map(( country ) => {
-            let card22 = `
-                 <td class="itemTeam"> ${country} </td> 
-                 `
-                html += card22 ;                     
-          }); 
-          html += `
-        </tr>
-      </table>
-          `; 
-      containerCards22.innerHTML = html;
-    };
-    cardsFunction22()
-
-  });
 
     //imprime el menu de deportes
     function cargarSports (){
@@ -94,9 +118,10 @@ document.getElementById("allCountries").addEventListener("click", function () {
         sportSelector.appendChild(option);
         }}
         cargarSports();
-//Inicia la función que carga los datos en el menú desplegable de países
+
+        //Inicia la función que carga los datos en el menú desplegable de países
 function cargarCountries(){
-  const paises = [ "Algeria", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",  "Bahamas",  "Bahrain", "Belarus", "Belgium", "Brazil", "Brazil-1", "Bulgaria", "Burundi", "Canada", "China", "China-1", "Chinese Taipei", "Colombia", 
+  const paises = [ "All Teams alphabetically", "Algeria", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",  "Bahamas",  "Bahrain", "Belarus", "Belgium", "Brazil", "Brazil-1", "Bulgaria", "Burundi", "Canada", "China", "China-1", "Chinese Taipei", "Colombia", 
           "Cote d'Ivoire", "Croatia", "Cuba", "Czech Republic", "Czech Republic-1", "Denmark", "Dominican Republic", "Egypt", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Georgia", "Germany", "Germany-1", "Great Britain", "Greece",
           "Grenada", "Hungary", "India", "Individual Olympic Athletes", "Indonesia", "Indonesia-1", "Iran", "Ireland", "Israel", "Italy", "Italy-1", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kosovo", "Lithuania", "Malaysia","Mexico",
           "Mongolia", "Morocco", "Netherlands", "Netherlands-1", "New Zealand", "Niger", "Nigeria", "North Korea", "Norway", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Romania", "Russia", "Russia-2", "Serbia", "Singapore",
