@@ -12,21 +12,24 @@
     <body>
       <div id="root"></div>
       <header>
-        <h1>Welcome to the Winners of Olympics Games 2016</h1>
+        <h1>Welcome to the Winners of the Olympics Games</h1>
         <img src="assets/logo rio de janeiro.png" class="logo">
+      </header>
+      <nav>
         <divrelevants>     
           <p class="cardrelevant">   204 Countries 
-          <img src="assets/continents.jpg" class="relevants"></p>
+          <img src="assets/continents.jpg" class="relevants1"></p>
           <p class="cardrelevant">11 000 Athletes
           <img src="assets/atleta.jpg" class="relevants"></p>    
           <p class="cardrelevant">    28 Sports 
           <img src="assets/inicio 1.jpg" class="relevants"></p> 
           <p class="cardrelevant">   306 Events 
           <img src="assets/medals1.jpg" class="relevants"></p> 
+          <p class="relevantsuggest"> Look for the most interesting data !!!</p>
+          <br>
         </divrelevants>
-        <br>
-        <br>
-      </header>
+      </nav>
+        
       <main>
         <div class="filterBox">    
             <i class="fas fa-globe-americas"></i> 
@@ -55,26 +58,20 @@
             <option value="">Athlete</opion>
             <option value="All Athletes">All Athletes</opion>
             </select>
-            <input id="searchB"     placeholder="Search by name   " class="inputs">
-
+            <!--<input id="searchB"     placeholder="Search by name   " class="inputs"> -->
         </div>
 
-
-        <br>
-        <br>
         <div id="totalFilter">Athletes</div>
         <br>
-        <br>
         <button class="buttonsearch2" id="buttonsearch2"><i class="fas fa-search"></i> Search</button>
-        <br>
-        <br>
+  
 
         <div class="resultados" id="resultados"></div>
         <div class="contenedor">  </div> 
 
         <div id="totalTeams"></div>
         <div id="card"></div>
-      </div>
+
       </main>
       <script src="main.js" type="module"></script>
     </body>

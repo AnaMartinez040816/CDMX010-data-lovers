@@ -1,8 +1,8 @@
 import {theAthletes} from './data/athletes/athletes.js';
 import {filterSearch, cards} from './data.js';
+//import {cards} from './data.js';
 
-const losAtletas= theAthletes.athletes
-const butShowAll= document.getElementById("buttonShowAll");
+const losAtletas = theAthletes.athletes
 const selectGender = document.querySelector("#genderFilter");
 const selectMedal = document.querySelector("#medalFilter");
 const selectTeam = document.querySelector("#pais");
@@ -10,10 +10,8 @@ const selectSport = document.querySelector("#sportSelector")
 const selectAthlete = document.querySelector("#athleteFilter")
 const buttonSearch = document.getElementById("buttonsearch2");
 
-
-
 buttonSearch.addEventListener("click", function theGenderFilter() {
-  if (selectSport) {
+  if (sportSelector) {
        let athletesFilter = theAthletes.athletes;
        let html1 = ""
        let results = document.querySelector("#resultados");
@@ -27,11 +25,10 @@ buttonSearch.addEventListener("click", function theGenderFilter() {
        nav.appendChild(element);
        nav.innerHTML = theTotal; 
     
-  }
-  
-
+  };
     if (selectTeam.value === "All Teams alphabetically") {
       // muestra una lista con total de los equipos ganadores 
+      let html22 = " "
       const importedAthletes=theAthletes.athletes;
       let countries = importedAthletes.slice(0);
       countries.sort(function(a,b) {
@@ -42,7 +39,7 @@ buttonSearch.addEventListener("click", function theGenderFilter() {
       let countriesOne = [...new Set(countries.map(item => item.team))];
       let cardsFunction22 = () => {
         let containerCards22 = document.getElementById("resultados");
-        let html = `
+        html22 = `
            <div class="cardTeam" >
                 <img src="assets/logo rio de janeiro.png" class="mediumLogo">                       
                 <div class="titletotalteams">${countriesOne.length} Equipos ganaron medallas</div> 
@@ -56,41 +53,26 @@ buttonSearch.addEventListener("click", function theGenderFilter() {
               let card22 = `
                  <td class="itemTeam"> ${country} </td> 
                  `
-                html += card22 ;                     
+                html22 += card22 ;                     
           }); 
-          html += `
+          html22 += `
           </tr>
           </table>
           `; 
-          containerCards22.innerHTML = html;
+          containerCards22.innerHTML = html22;
       };
     cardsFunction22()
-    } 
+    }; 
+
+
       if (selectAthlete.value === "All Athletes") { 
          // Muestra todos los atletas
           let cardsFunction = losAtletas.map((e)=>{
             return cards(e);
           }).join(""); 
           document.getElementById("resultados").innerHTML= cardsFunction;
-      }
-        if (searchB) {
-          const losAtletas= theAthletes.athletes
-          const formulario = document.querySelector("#searchB");
-          const resultadoDelFinder = document.querySelector("#resultados")
-          const textUser = formulario.value.toLowerCase();
-          for(let e of losAtletas){
-              let nombre = e.name.toLowerCase();
-              if(nombre.indexOf(textUser) !== -1){
-                  resultadoDelFinder.innerHTML += 
-                  cards(e);
-              }
-          }
-          if(resultadoDelFinder.innerHTML === ""){
-              resultadoDelFinder.innerHTML += `
-              <h1> The athlete does not exist...try again</h1>
-                  `;
-          }
-        }   
+      };
+        
 
 }); 
 
@@ -105,6 +87,9 @@ losAtletas2.sort( function (a,b) {
     return 0;
 });
 
+//Inicia la función que busca por coincidenicia de nombre
+           //const boton = document.querySelector("#buttonFinder");
+           //boton.addEventListener("click", filterSearch);
 
     //imprime el menu de deportes
     function cargarSports (){
@@ -133,11 +118,7 @@ function cargarCountries(){
       option.innerHTML=paises[i]; //se mete el texto en la opción
       select.appendChild(option); // se mete la opción en el select
   }}
-
   cargarCountries();        
 
-//Inicia la función que busca por coincidenicia de nombre
-const boton = document.querySelector("#buttonFinder");
-boton.addEventListener("click", filterSearch);
 
 
